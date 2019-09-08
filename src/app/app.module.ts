@@ -10,6 +10,7 @@ import { AbcComponent } from './abc/abc.component';
   declarations: [
     AppComponent,
     XyzComponent,
+    
     AbcComponent
   ],
   imports: [
