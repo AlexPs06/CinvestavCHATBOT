@@ -1,20 +1,14 @@
-
-sudo: required
-addons:
-  chrome: stable
 language: node_js
 node_js:
-  - "10.0"
+  - "9"
+dist: trusty
+sudo: required
 branches:
   only:
-    - master
+  - master
 before_script:
   - npm install -g @angular/cli
 script:
-  - npm install
-  - ng build --prod
-deploy:
-  skip_cleanup: true
-  provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
+  - ng lint
+  - npm run test-headless
+  - ng build --prod --base-href https://github.com/AlexPs06/CinvestavCHATBOT
