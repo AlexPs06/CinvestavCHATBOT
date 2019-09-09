@@ -10,34 +10,34 @@ export class APIService {
 
   constructor(private http: HttpClient) { }
 
-  login(params: any): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    }
-    return this.http.post(`${this.api}login/`, params, httpOptions)
-  }
+  // login(params: any): Observable<any> {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json'
+  //     })
+  //   }
+  //   return this.http.post(`${this.api}login/`, params, httpOptions)
+  // }
  
-  editUnidades(params: any, id): Observable<any>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization':'Token '+localStorage.getItem('token')
-      })
-    }
+  // editUnidades(params: any, id): Observable<any>{
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       'Authorization':'Token '+localStorage.getItem('token')
+  //     })
+  //   }
 
-    return this.http.put(`${this.api}unidades/${id}`, params, httpOptions)
-  }
+  //   return this.http.put(`${this.api}unidades/${id}`, params, httpOptions)
+  // }
 
-  getEquipos(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization':'Token '+localStorage.getItem('token')
-      })
-    }
-    return this.http.get(`${this.api}registro/`, httpOptions)
-  }
+  // getEquipos(): Observable<any> {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       'Authorization':'Token '+localStorage.getItem('token')
+  //     })
+  //   }
+  //   return this.http.get(`${this.api}registro/`, httpOptions)
+  // }
 
 }
