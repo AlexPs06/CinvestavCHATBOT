@@ -11,5 +11,12 @@ export class XyzComponent implements OnInit {
 
   ngOnInit() {
   }
+  /**
+   * funcion llamada name
+   * @param params son los parametros de muestra 
+   */
+  name(params) {
+    
+  }
 
 }
