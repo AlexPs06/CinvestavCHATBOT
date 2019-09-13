@@ -1,0 +1,41 @@
+<div class="image_background">
+    <app-header></app-header>
+    <!-- <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-sm-9 offset-sm-1 col-xl-4 offset-xl-8 back"> -->
+    <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-sm-9 offset-sm-1 col-xl-4 offset-xl-8 background_login transparent ">
+        <mat-card class="centrado">
+            <mat-card-title>
+                <div class="circulo_login">
+                </div>
+            </mat-card-title>
+            <mat-card-content>
+                <form [formGroup]="formLogin" autocomplete="off" (ngSubmit)="sendLogin()">
+                    <p>
+
+                        <input type="text" class="input_login" matInput placeholder="Username" formControlName="username">
+                    </p>
+
+                    <p>
+                        <input type="password" class="input_login" matInput placeholder="Password" formControlName="password">
+                    </p>
+
+                    <p *ngIf="error" class="error">
+                        {{ error }}
+                    </p>
+
+                    <div class="button">
+                        <button class="button_login" type="submit" mat-button>Iniciar sesión</button>
+                    </div>
+                    <p style="color: white; margin-top: 5px;">
+                        ¿No tienes cuenta? Regitrate
+                    </p>
+
+                </form>
+            </mat-card-content>
+        </mat-card>
+        <!-- /form -->
+        <!-- </div> -->
+
+        <!-- /card-container -->
+    </div>
+</div>
+<!-- <img src="assets\pictures\paper.jpg" class=".img-fluid. max-width: 100%;" style="height: auto;"> -->
