@@ -27,13 +27,9 @@ const angularMaterial=[
   declarations: [
     AppComponent,
     XyzComponent,
-    
     AbcComponent,
-    
     LoginComponent,
-    
     HeaderComponent,
-    
     RegisterComponent
   ],
   imports: [
