@@ -17,6 +17,7 @@ const angularMaterial=[
 import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -28,9 +29,11 @@ describe('LoginComponent', () => {
         angularMaterial,
         FormsModule, 
         ReactiveFormsModule,
-        HeaderComponent
+        RouterTestingModule
       ],
-      declarations: [ LoginComponent ]
+      declarations: [ 
+        LoginComponent,
+        HeaderComponent ]
     })
     .compileComponents();
   }));
