@@ -15,6 +15,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
 import {MatInputModule} from '@angular/material';
+import { RegisterComponent } from './register/register.component';
 const angularMaterial=[
   MatCardModule,
   MatButtonModule,
@@ -31,7 +32,9 @@ const angularMaterial=[
     
     LoginComponent,
     
-    HeaderComponent
+    HeaderComponent,
+    
+    RegisterComponent
   ],
   imports: [
     BrowserAnimationsModule,

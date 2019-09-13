@@ -42,5 +42,7 @@ export class LoginComponent implements OnInit {
     console.log(this.formLogin.value.username+"--"+this.formLogin.value.password)
     
   }
-
+  register(){
+    
+  }
 }
