@@ -22,7 +22,8 @@ describe('MenuComponent', () => {
       ],
       declarations: [ 
         MenuComponent,
-        HeaderComponent ]
+        HeaderComponent 
+      ]
     })
     .compileComponents();
   }));
