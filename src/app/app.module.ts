@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import {MatInputModule} from '@angular/material';
 import { RegisterComponent } from './register/register.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { MenuProfesorComponent } from './menu-profesor/menu-profesor.component';
 const angularMaterial=[
   MatCardModule,
   MatButtonModule,
@@ -33,7 +34,8 @@ const angularMaterial=[
     AbcComponent,
     LoginComponent,
     HeaderComponent,
-    RegisterComponent
+    RegisterComponent,
+    MenuProfesorComponent
   ],
   imports: [
     BrowserAnimationsModule,
