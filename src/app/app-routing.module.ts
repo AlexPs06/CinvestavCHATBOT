@@ -4,7 +4,7 @@ import { XyzComponent } from './xyz/xyz.component';
 import { AbcComponent } from './abc/abc.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { MenuProfesorComponent } from './menu-profesor/menu-profesor.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
   { path: 'xyz', component: XyzComponent },
@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'Login', component: LoginComponent },
   { path: '', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
-  { path: '**', component: RegisterComponent },
-  { path: 'MenuProfesor', component: MenuProfesorComponent },
+  { path: '**', redirectTo: "not_found" },
+  { path: 'Menu', component: MenuComponent },
 
 ];
 
