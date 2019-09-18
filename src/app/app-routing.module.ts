@@ -5,6 +5,7 @@ import { AbcComponent } from './abc/abc.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 const routes: Routes = [
   { path: 'xyz', component: XyzComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: '**', redirectTo: "not_found" },
   { path: 'Menu', component: MenuComponent },
+  { path: 'Chatbot', component: ChatbotComponent },
 
 ];
 

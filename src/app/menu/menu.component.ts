@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  typeMenu:String ="profesor" //existen dos tipos de menu alumno y profesor entre esos debe de cambiar la variable
+  typeMenu:String ="alumno" //existen dos tipos de menu alumno y profesor entre esos debe de cambiar la variable
   nameProfesor:String="Luis"
   constructor() { }
 
