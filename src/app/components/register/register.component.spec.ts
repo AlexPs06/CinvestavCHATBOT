@@ -1,14 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {MatInputModule, MatRadioModule, MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule} from '@angular/material';
-import { APIService } from 'src/services/api.service';
+import {MatInputModule, MatRadioModule, MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule, MatDialogModule} from '@angular/material';
 const angularMaterial=[
   MatCardModule,
   MatButtonModule,
   MatToolbarModule,
   MatInputModule,
   MatIconModule,
-  MatRadioModule
-
+  MatRadioModule,
+  MatDialogModule
 ]
 
 import { RegisterComponent } from './register.component';
