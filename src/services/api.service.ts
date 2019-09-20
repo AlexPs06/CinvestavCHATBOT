@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { API, API2 } from 'src/app/app-config'
+import { Profesor } from 'src/app/models/Profesor.model';
+import { Alumno } from 'src/app/models/Alumno.model';
+import { User } from 'src/app/models/User.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +14,7 @@ export class APIService {
 
   constructor(private http: HttpClient) { }
 
-    registerProfesor(params: Profesor ):Observable<any>{
+    register(params: User ):Observable<any>{
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -19,8 +22,9 @@ export class APIService {
         })
       }
 
-      return this.http.post(`${this.api}profesors/`, params, httpOptions)
+      return this.http.post(`${this.api}users/`, params, httpOptions)
     }
+    
     getHello():Observable<any>{
       const httpOptions = {
         headers: new HttpHeaders({
@@ -60,16 +64,5 @@ export class APIService {
   //   }
   //   return this.http.get(`${this.api}registro/`, httpOptions)
   // }
-
-}
-export class Profesor{
-	nombre:String
-	apellido_materno:String
-	apellido_paterno:String
-	edad:Number
-	correo:String
-	contraseña:String
-}
-export class Alumno{
 
 }
