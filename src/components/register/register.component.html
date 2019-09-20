@@ -10,7 +10,26 @@
             <mat-card-content>
                 <form [formGroup]="formRegister" autocomplete="off" (ngSubmit)="sendRegister()">
                     <input type="text" class="input_register" matInput placeholder="Username" formControlName="username">
-                    <input type="email" autocomplete="off" class="input_register" matInput placeholder="Email" formControlName="email">
+
+                    <!-- <div *ngIf="submitted && f.username.errors" style="z-index: 10; color: white;">
+                        <div *ngIf="f.username.errors.required">Campo requerido</div>
+                    </div> -->
+
+                    <div class="example-radio-group">
+                        <input type="text" class="input_register_apellidos" matInput placeholder="Apellido paterno" formControlName="lastNameFather">
+                        <input type="text" class="input_register_apellidos" matInput placeholder="Apellido materno" formControlName="lastNameMother">
+                        <input type="number" class="input_edad" matInput placeholder="Edad" formControlName="yearsold">
+
+                    </div>
+
+                    <input type="email" class="input_register" matInput placeholder="Email" formControlName="email">
+
+
+                    <!-- <div *ngIf="submitted && f.email.errors" style="z-index: 10; color: white;">
+                        <div *ngIf="f.email.errors.required">Campo requerido</div>
+                        <div *ngIf="f.email.errors.email">Email invalido</div>
+                    </div> -->
+
                     <p>
                         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="rol">
                             <mat-radio-button class="example-radio-button" *ngFor="let rol of rols" [value]="rol">

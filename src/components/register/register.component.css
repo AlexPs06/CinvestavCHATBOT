@@ -49,12 +49,53 @@
     color: white;
     max-width: 505px;
     width: 70%;
-    height: 70px;
+    height: 50px;
     max-height: 100px;
     z-index: 1;
     /* border: .1px; */
     border-width: 1px;
     border-color: #707070;
+}
+
+.input_register_apellidos {
+    margin-right: 1%;
+    text-indent: 7px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    background-color: #47649D;
+    color: white;
+    max-width: 200px;
+    width: 70%;
+    height: 50px;
+    max-height: 100px;
+    z-index: 1;
+    /* border: .1px; */
+    border-width: 1px;
+    border-color: #707070;
+}
+
+.input_register_apellidos::placeholder {
+    color: white;
+}
+
+.input_edad {
+    text-indent: 7px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    background-color: #47649D;
+    color: white;
+    max-width: 100px;
+    width: 70%;
+    height: 50px;
+    max-height: 100px;
+    z-index: 1;
+    /* border: .1px; */
+    border-width: 1px;
+    border-color: #707070;
+}
+
+.input_edad::placeholder {
+    color: white;
 }
 
 .input_register::placeholder {
