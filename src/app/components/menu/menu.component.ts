@@ -13,10 +13,12 @@ export class MenuComponent implements OnInit {
   user:User;
   constructor(
     private router: Router,
-  ) { }
+  ) {
+    this.user= JSON.parse(localStorage.getItem("user"))
+
+   }
 
   ngOnInit() {
-    this.user= JSON.parse(localStorage.getItem("user"))
     this.typeMenu=this.user.type;
     this.name= this.user.username
     console.log(this.user)

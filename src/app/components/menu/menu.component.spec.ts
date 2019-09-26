@@ -4,6 +4,7 @@ import { MenuComponent } from './menu.component';
 import { HeaderComponent } from '../header/header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatButtonModule, MatToolbarModule, MatIconModule } from '@angular/material';
+import { User } from 'src/app/models/User.model';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -31,6 +32,8 @@ describe('MenuComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
+    component.user = new User("alex",12,"luis_pesar@hotmail.com","not","Alumno","1") //Se crea un usuario de prueba para el testing 
+
     fixture.detectChanges();
   });
 
