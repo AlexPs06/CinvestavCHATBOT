@@ -1,7 +1,24 @@
+/**
+ * Clase usuario la cual modela al usuario de la aplicación
+ * 
+ */
 export class User{
-    username:String
-    age:Number
-    email:String
-    password:String
-    type:String
+  /**
+   * @param age es la edad del usuario
+   * @param email es el email del usuario
+   * @param password es la contraseña del usuario 
+   * @param type es el tipo del usuario
+   */
+   
+    constructor (
+      public username:String,
+      public age:Number,
+      public email:String, 
+      public password:String,
+      public type:String,
+      public id:String,
+
+    ){
+
+    }
   }

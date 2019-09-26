@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { APIService } from 'src/app/services/api/api.service';
+import { User } from 'src/app/models/User.model';
 
 @Component({
   selector: 'app-login',
@@ -13,20 +15,34 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formbuilder : FormBuilder,
-    private router: Router
-
-
+    private router: Router,
+    private api: APIService
   ) { 
     this.formLogin = this.formbuilder.group({
-      username : [''],
+      email : [''],
       password : ['']
     })
   }
 
   ngOnInit() {
+    this.api.getHello().subscribe(response=>{
+      console.log(response)
+    })
   }
   comprobarLogin(){
-    
+    let login=this.formLogin.value;
+    this.api.login(login).subscribe(response=>{
+      console.log(response.token)
+      let user:User =  response.user;
+      localStorage.setItem("user", JSON.stringify(user))
+      localStorage.setItem("token", response.token)
+      this.router.navigateByUrl("Menu")
+    },error =>{
+      alert(error.error.message)
+      console.log(error.error.message)
+      console.log(error.error.status)
+    })
+
   }
   sendLogin(){
     this.submit=true;
@@ -39,7 +55,6 @@ export class LoginComponent implements OnInit {
     this.comprobarLogin();
     this.submit=false;
 
-    console.log(this.formLogin.value.username+"--"+this.formLogin.value.password)
     
   }
   register(){

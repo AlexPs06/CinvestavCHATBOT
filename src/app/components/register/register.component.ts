@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { APIService } from 'src/services/api.service';
+import { APIService } from 'src/app/services/api/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AlertComponent } from '../alert/alert.component';
 import { User } from 'src/app/models/User.model';
@@ -13,7 +13,7 @@ import { User } from 'src/app/models/User.model';
 
 /**
  * Clase para el registro de usuarios
- * 
+ *  @param formRegister es el register 
  */
 export class RegisterComponent implements OnInit {
   
@@ -70,6 +70,7 @@ export class RegisterComponent implements OnInit {
 
   /**
    * Metodo que permite obtener el form para validar errores
+   * @returns retorna los controls del form del register
    */
   get f() { return this.formRegister.controls; }
 
@@ -85,7 +86,8 @@ export class RegisterComponent implements OnInit {
         password:this.formRegister.get("password").value,
         email: this.formRegister.get("email").value,
         age: this.formRegister.get("yearsold").value,
-        type:this.formRegister.get("rol").value
+        type:this.formRegister.get("rol").value,
+        id:null
       }
       this.api.register(user).subscribe(response =>{
         console.log(response)
@@ -98,12 +100,14 @@ export class RegisterComponent implements OnInit {
   }
 
   /**
-   * Envia y compruba que los campos del form esten bien 
+   * Envia y compruba que los campos del form esten bien
+   * @returns retorna un elemento vacio para terminar la funcion 
    */
   sendRegister(){
     
     this.submitted=true;
     if(this.formRegister.invalid){
+      alert("Error uno o mas campos son requeridos")
       console.log(this.formRegister.value)
       console.log(this.formRegister.invalid)
       return;

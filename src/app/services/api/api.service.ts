@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { API, API2 } from 'src/app/app-config'
-import { Profesor } from 'src/app/models/Profesor.model';
-import { Alumno } from 'src/app/models/Alumno.model';
 import { User } from 'src/app/models/User.model';
 @Injectable({
   providedIn: 'root'
@@ -34,6 +32,15 @@ export class APIService {
       }
       return this.http.get(`${this.api2}`,httpOptions)
 
+    }
+    login(params):Observable<any>{
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        })
+      }
+      return this.http.post(`${this.api}login/`, params, httpOptions); ;
     }
   // login(params: any): Observable<any> {
   //   const httpOptions = {

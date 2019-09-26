@@ -8,12 +8,12 @@
                     <div class="row" *ngFor="let msg of array_messages">
                         <p class="col-5 ml-3 xl-2
                                             shadow-sm p-3 mb-5 bg-white rounded 
-                                            rounded-right text-break align-self-start" *ngIf="msg.idUser != currentUser"><strong>{{ msg.idUser }}:</strong> {{ msg.mensaje }}</p>
+                                            rounded-right text-break align-self-start" *ngIf="msg.idUser != currentUser"><strong>{{ msg.name }}:</strong> {{ msg.content }}</p>
 
                         <p class=" col-5 mr-3 
                                             rounded-left text-break 
                                             shadow-sm p-3 mb-5 bg-white rounded
-                                            align-self-end ml-auto" *ngIf="msg.idUser == currentUser"><strong>{{ msg.idUser }}:</strong> {{ msg.mensaje }}</p>
+                                            align-self-end ml-auto" *ngIf="msg.idUser == currentUser"><strong>{{ msg.name }}:</strong> {{ msg.content }}</p>
                     </div>
                 </div>
 
