@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
 import { HeaderComponent } from '../header/header.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MatButtonModule, MatToolbarModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatIconModule, MatMenuModule } from '@angular/material';
 import { User } from 'src/app/models/User.model';
 
 describe('MenuComponent', () => {
@@ -12,7 +12,9 @@ describe('MenuComponent', () => {
   const angularMaterial=[
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+
   ]
   
   beforeEach(async(() => {
