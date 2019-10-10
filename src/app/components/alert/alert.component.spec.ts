@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlertComponent } from './alert.component';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatDialog } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
 
 const angularMaterial=[
-  MatDialogModule
-
+  MatDialogModule,
 ]
 
 describe('AlertComponent', () => {
@@ -18,6 +18,11 @@ describe('AlertComponent', () => {
       imports: [
         angularMaterial
         
+      ],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: [] },
+        // ...
       ],
       declarations: [ AlertComponent ]
     })
