@@ -1,3 +1,4 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 .image_background {
     position: absolute !important;
     top: 0px !important;

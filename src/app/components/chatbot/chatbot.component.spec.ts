@@ -4,7 +4,7 @@ import { ChatbotComponent } from './chatbot.component';
 import { HeaderComponent } from '../header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MatCardModule, MatButtonModule, MatToolbarModule, MatInputModule, MatIconModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatToolbarModule, MatInputModule, MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
 import { User } from 'src/app/models/User.model';
 
 
@@ -13,7 +13,10 @@ const angularMaterial=[
   MatButtonModule,
   MatToolbarModule,
   MatInputModule,
-  MatIconModule
+  MatIconModule,
+  MatMenuModule,
+  MatDialogModule
+
 ]
 describe('ChatbotComponent', () => {
   let component: ChatbotComponent;

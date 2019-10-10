@@ -4,6 +4,8 @@ import { ChatbotService } from 'src/app/services/chatbot/chatbot.service';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/User.model';
 import { Message } from 'src/app/models/Message.model';
+import { MatDialog } from '@angular/material';
+import { AddFilesComponent } from 'src/app/dialogs/add-files/add-files.component';
 
 @Component({
   selector: 'app-chatbot',
@@ -18,7 +20,8 @@ export class ChatbotComponent implements OnInit {
 
   constructor(
     private formbuilder : FormBuilder,
-    private chabtot: ChatbotService
+    private chabtot: ChatbotService,
+    public dialog : MatDialog
   ) {
     this.formChat = this.formbuilder.group({
       message : [''],
@@ -53,6 +56,14 @@ export class ChatbotComponent implements OnInit {
 
     this.formChat.reset();
     // message.value=""
+  }
+  sendFile(){
+  }
+  openDialogAddFile(){
+    const dialogRef = this.dialog.open(AddFilesComponent);
+    dialogRef.afterClosed().subscribe(response=>{
+      console.log(response);
+    })
   }
 
 }

@@ -2,7 +2,8 @@
     <app-header></app-header>
     <div class="background_chatbot">
         <div class="" style="width: 100%;">
-            <form [formGroup]="formChat" (ngSubmit)="sendMessage(target)">
+            <form [formGroup]="formChat">
+                <!-- (ngSubmit)="sendMessage(target) -->
                 <div class="form-group shadow-none p-3 mb-5 rounded" style="width:auto;  height: 90%; max-height: 650px; overflow-y: auto; overflow-x: hidden;">
                     <!-- Chat -->
                     <div class="row" *ngFor="let msg of array_messages">
@@ -19,17 +20,25 @@
 
                 <div class="background_bar">
                     <div class="horizontal row">
-                        <button class="add" mat-button>
-                                <i class="material-icons">
-                                add
-                                </i>
+                        <button (click)="sendFile()" [matMenuTriggerFor]="menu" class="add">
+                        <i class="material-icons">
+                            add
+                        </i>       
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="openDialogAddFile()">
+                                <mat-icon>file_copy</mat-icon>
+                                <span>Añadir un archivo </span>
                             </button>
+                        </mat-menu>
+
+                        </button>
+
                     </div>
                     <div class="horizontal">
                         <input formControlName="message" type="text" class=" border border-dark  rounded  text_bar" matInput placeholder="Tu mensaje va aqui">
                     </div>
                     <div class="horizontal row">
-                        <button type="submit" class="send" mat-button>
+                        <button (click)="sendMessage()" class="send" mat-button>
                                 <i class="material-icons">
                                 send
                                 </i>
