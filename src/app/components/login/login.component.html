@@ -1,21 +1,23 @@
 <div class="image_background">
     <app-header></app-header>
-    <!-- <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-sm-9 offset-sm-1 col-xl-4 offset-xl-8 back"> -->
+
     <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-sm-9 offset-sm-1 col-xl-4 offset-xl-8 background_login transparent ">
-        <mat-card class="centrado">
-            <mat-card-title>
+
+
+        <div class="centrado">
+            <div>
                 <div class="circulo_login">
                 </div>
-            </mat-card-title>
-            <mat-card-content>
+            </div>
+            <div>
                 <form [formGroup]="formLogin" autocomplete="off" (ngSubmit)="sendLogin()">
                     <p>
 
-                        <input type="email" class="input_login" matInput placeholder="Email" formControlName="email">
+                        <input type="email" class="input_login" placeholder="Email" formControlName="email">
                     </p>
 
                     <p>
-                        <input type="password" class="input_login" matInput placeholder="Password" formControlName="password">
+                        <input type="password" class="input_login" placeholder="Password" formControlName="password">
                     </p>
 
                     <p *ngIf="error" class="error">
@@ -30,12 +32,9 @@
                     </p>
 
                 </form>
-            </mat-card-content>
-        </mat-card>
-        <!-- /form -->
-        <!-- </div> -->
+            </div>
+        </div>
 
-        <!-- /card-container -->
     </div>
 </div>
 <!-- <img src="assets\pictures\paper.jpg" class=".img-fluid. max-width: 100%;" style="height: auto;"> -->

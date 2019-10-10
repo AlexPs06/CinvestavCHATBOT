@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formbuilder : FormBuilder,
     private router: Router,
-    private api: APIService
+    private api: APIService,
   ) { 
     this.formLogin = this.formbuilder.group({
       email : [''],
@@ -60,4 +60,6 @@ export class LoginComponent implements OnInit {
   register(){
     this.router.navigateByUrl("Register")
   }
+
+ 
 }
