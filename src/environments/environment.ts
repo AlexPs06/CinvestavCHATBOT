@@ -6,6 +6,15 @@ export const environment = {
   production: false,
   dialogflow:{
     cinvestavChatbot:"139c80b0b3214d14a29877c4fa62e692"
+  },
+  firebase: {
+    apiKey: "AIzaSyCfsNVhrr-acJ246R23wx-YVUIVcY86WQc",
+    authDomain: "cinvestavchatbot.firebaseapp.com",
+    databaseURL: "https://cinvestavchatbot.firebaseio.com",
+    projectId: "cinvestavchatbot",
+    storageBucket: "cinvestavchatbot.appspot.com",
+    messagingSenderId: "984782490625",
+    appId: "1:984782490625:web:a6f4858d404f307b900400"
   }
 };
 
