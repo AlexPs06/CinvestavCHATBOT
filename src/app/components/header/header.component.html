@@ -1,9 +1,37 @@
-<mat-toolbar class="toolbar">
+<!-- <mat-toolbar class="toolbar">
     <mat-toolbar-row>
         <span>Custom Toolbar</span>
     </mat-toolbar-row>
-</mat-toolbar>
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+</mat-toolbar> -->
+
+
+<mat-toolbar class="toolbar">
+    <mat-toolbar-row>
+        <span>ChatBot</span>
+        <span class="example-fill-remaining-space"></span>
+        <span class="align-center"></span>
+        <span class="example-spacer"></span>
+        <button mat-button>Login</button>
+        <button mat-button>Register</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Redial</span>
+          </button>
+            <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voicemail</span>
+          </button>
+            <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button>
+        </mat-menu>
+    </mat-toolbar-row>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-danger">
     <mat-toolbar class="toolbar">
         <mat-toolbar-row>
             <span>Custom Toolbar</span>
