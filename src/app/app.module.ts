@@ -14,13 +14,24 @@ import { LoginComponent } from './components/login/login.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
-import {MatInputModule} from '@angular/material';
+import {MatInputModule, MatProgressSpinnerModule} from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { MenuComponent } from './components/menu/menu.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AlertComponent } from './components/alert/alert.component';
+import { environment } from 'src/environments/environment';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
+
+
+import { AngularFireModule } from '@angular/fire';
+import {AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import { AddFilesComponent } from './dialogs/add-files/add-files.component';
 const angularMaterial=[
   MatCardModule,
   MatButtonModule,
@@ -28,7 +39,10 @@ const angularMaterial=[
   MatInputModule,
   MatIconModule,
   MatRadioModule,
-  MatDialogModule
+  MatDialogModule,
+  MatProgressSpinnerModule,
+  MatMenuModule,
+  MatSelectModule
 
 ]
 @NgModule({
@@ -41,7 +55,8 @@ const angularMaterial=[
     RegisterComponent,
     MenuComponent,
     ChatbotComponent,
-    AlertComponent
+    AlertComponent,
+    AddFilesComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -51,11 +66,13 @@ const angularMaterial=[
     FormsModule,
     ReactiveFormsModule,
     angularMaterial,
-    
-    
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,     
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AlertComponent]
+  entryComponents: [AlertComponent,AddFilesComponent]
 })
 export class AppModule { }
