@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {MatInputModule, MatRadioModule, MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule, MatDialogModule} from '@angular/material';
+import {MatInputModule, MatRadioModule, MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule, MatDialogModule, MatMenuModule} from '@angular/material';
 const angularMaterial=[
   MatCardModule,
   MatButtonModule,
@@ -7,7 +7,9 @@ const angularMaterial=[
   MatInputModule,
   MatIconModule,
   MatRadioModule,
-  MatDialogModule
+  MatDialogModule,
+  MatMenuModule
+
 ]
 
 import { RegisterComponent } from './register.component';
@@ -15,6 +17,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
@@ -26,6 +33,10 @@ describe('RegisterComponent', () => {
         FormsModule, 
         ReactiveFormsModule,
         RouterTestingModule,
+        AngularFireDatabaseModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireStorageModule,
         HttpClientTestingModule
         
       ],

@@ -1,12 +1,12 @@
 <div class="image_background">
     <app-header></app-header>
     <div class=" background_register transparent ">
-        <mat-card class="centrado">
-            <mat-card-title>
+        <div class="centrado">
+            <div>
                 <div class="circulo_register">
                 </div>
-            </mat-card-title>
-            <mat-card-content>
+            </div>
+            <div>
                 <form [formGroup]="formRegister" autocomplete="off" (ngSubmit)="sendRegister()">
                     <input type="text" class="input_register" matInput placeholder="Username" formControlName="username">
 
@@ -48,8 +48,8 @@
                     </p>
 
                 </form>
-            </mat-card-content>
-        </mat-card>
+            </div>
+        </div>
 
     </div>
 </div>

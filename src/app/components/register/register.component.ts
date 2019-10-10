@@ -5,6 +5,7 @@ import { APIService } from 'src/app/services/api/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AlertComponent } from '../alert/alert.component';
 import { User } from 'src/app/models/User.model';
+import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -33,7 +34,8 @@ export class RegisterComponent implements OnInit {
     private api: APIService,
     private formbuilder : FormBuilder,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private firabse: FirebaseService,
 
   ) { 
     this.formRegister = this.formbuilder.group({
@@ -80,21 +82,38 @@ export class RegisterComponent implements OnInit {
    */
   register(){
     
-      let user: User;
-      user={
-        username:this.formRegister.get("username").value+" "+this.formRegister.get("lastNameFather").value+""+this.formRegister.get("lastNameMother").value,
-        password:this.formRegister.get("password").value,
-        email: this.formRegister.get("email").value,
-        age: this.formRegister.get("yearsold").value,
-        type:this.formRegister.get("rol").value,
-        id:null
-      }
-      this.api.register(user).subscribe(response =>{
-        console.log(response)
-      }, error=>{
-        console.log(error)
-  
-      })
+    //registrarse usando firebase 
+    // let user;
+    // user={
+    //   username:this.formRegister.get("username").value+" "+this.formRegister.get("lastNameFather").value+" "+this.formRegister.get("lastNameMother").value,
+    //   password:this.formRegister.get("password").value,
+    //   email: this.formRegister.get("email").value,
+    //   age: this.formRegister.get("yearsold").value,
+    //   type:this.formRegister.get("rol").value,
+    //   id:null
+    // }
+    // this.firabse.addUser(user)
+    // .then(res => {
+    //   console.log(res)
+
+    // });
+
+    //------------------------------------------------------------------esto es usando la api creada ------------------------------------------------------------------
+    let user: User;
+    user={
+      username:this.formRegister.get("username").value+" "+this.formRegister.get("lastNameFather").value+""+this.formRegister.get("lastNameMother").value,
+      password:this.formRegister.get("password").value,
+      email: this.formRegister.get("email").value,
+      age: this.formRegister.get("yearsold").value,
+      type:this.formRegister.get("rol").value,
+      id:null
+    }
+    this.api.register(user).subscribe(response =>{
+      console.log(response)
+    }, error=>{
+      console.log(error)
+
+    })
    
     
   }
@@ -108,8 +127,6 @@ export class RegisterComponent implements OnInit {
     this.submitted=true;
     if(this.formRegister.invalid){
       alert("Error uno o mas campos son requeridos")
-      console.log(this.formRegister.value)
-      console.log(this.formRegister.invalid)
       return;
     }
 
@@ -125,4 +142,19 @@ export class RegisterComponent implements OnInit {
     this.router.navigateByUrl("Login")
   }
 
+  testFirebase(){
+    let user:User = new User ("Alex",12,"luis_pesar@hotmail.com","Alejandro1998a","Alumno","")
+    let id;
+    this.firabse.getUsers().subscribe(response=>{
+      for (let index = 0; index < response.length; index++) {
+        const element = response[index];
+        console.log(element.payload.doc.data())
+        console.log(element.payload.doc.id)
+        id=element.payload.doc.id
+        // user=element.payload.doc.data
+        
+      }
+    })
+    this.firabse.updateUser("4nbQ5UTx4YWWI17w2gH2", user) 
+  }
 }
