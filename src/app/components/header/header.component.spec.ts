@@ -5,6 +5,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule, MatSelectModule, MatMenuModule, MatProgressSpinnerModule, MatDialogModule, MatRadioModule} from '@angular/material';
 import { HeaderComponent } from './header.component';
+import { RouterTestingModule } from '@angular/router/testing';
 const angularMaterial=[
   MatCardModule,
   MatButtonModule,
@@ -24,7 +25,8 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        angularMaterial
+        angularMaterial,
+        RouterTestingModule
       ],
       declarations: [ HeaderComponent ]
     })
