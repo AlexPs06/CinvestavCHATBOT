@@ -29,40 +29,32 @@ export class ChatbotComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log(this.user.id)
     this.currentUser=this.user.id
-    // let mensajePrueba:Message ;
-    // let mensajePrueba2:Message ;
-    // mensajePrueba={mensaje: "soy bot",  idUser: "1"}
-    // mensajePrueba2={mensaje: "soy usuario",  idUser: "2"}
-    // for (let index = 0; index < 10; index++) {
-    //   this.array_messages.push(mensajePrueba)
-    //   this.array_messages.push(mensajePrueba2)
     
-
-    
-    // }
   }
   sendMessage(){
     let value = this.formChat.get("message").value
-    let mensaje:Message = new Message (value, this.user.id, this.user.username) ;
-    this.chabtot.converse(mensaje.content).then(response=>{
-      this.array_messages.push(mensaje)    
-      console.log(response)
-      this.array_messages.push(response)    
+    let mensajeUsuario:Message = new Message (value, this.user.id, this.user.username) ;
+    this.chabtot.converse(mensajeUsuario.content).then(responseBot=>{
+      this.array_messages.push(mensajeUsuario)    
+      console.log(responseBot)
+      this.array_messages.push(responseBot)    
 
     })
-
-
     this.formChat.reset();
-    // message.value=""
   }
-  sendFile(){
-  }
+
   openDialogAddFile(){
     const dialogRef = this.dialog.open(AddFilesComponent);
     dialogRef.afterClosed().subscribe(response=>{
-      console.log(response);
+         
+      if (response) {
+        console.log(response);
+        let value = "Se ha añadido un nuevo material con la siguiente URL: "+response.url + " para la clase del "+response.grado+' "'+response.grupo+
+        '"para la materia de ' +response.materia +" con la siguiente descripcion: "+response.descripcion
+        let mesageBot:Message = new Message (value, "bot", "bot");
+        this.array_messages.push(mesageBot) 
+      }      
     })
   }
 

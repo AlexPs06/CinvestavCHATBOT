@@ -16,7 +16,7 @@ export class FirebaseService {
      }
 
     addFiles(file):Boolean{
-      this.database.database.ref("Material/").push(file).then(response=>{
+      this.database.database.ref("Material").push(file).then(response=>{
         return true;
 
       }, error=>{

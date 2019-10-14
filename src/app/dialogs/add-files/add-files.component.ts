@@ -44,14 +44,8 @@ export class AddFilesComponent implements OnInit {
   }
 
   sendFile(){
-    this.data=this.formFile.value();
+    this.data=this.formFile.value;
     let response:Boolean = this.firebase.addFiles(this.data);
-    if(response){
-      this.enviado=true
-    }
-    else{
-      this.enviado=false
-
-    }
+    
   }
 }

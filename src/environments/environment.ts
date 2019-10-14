@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   dialogflow:{
-    cinvestavChatbot:"139c80b0b3214d14a29877c4fa62e692"
+    cinvestavChatbot:"139c80b0b3214d14a29877c4fa62e692",
+    cinvestavChatbotProfesor:"dc001010f75e42dbb1e41db49ab43d8a"
   },
   firebase: {
     apiKey: "AIzaSyCfsNVhrr-acJ246R23wx-YVUIVcY86WQc",

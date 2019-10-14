@@ -2,8 +2,8 @@
     <app-header></app-header>
     <div class="background_chatbot">
         <div class="" style="width: 100%;">
-            <form [formGroup]="formChat">
-                <!-- (ngSubmit)="sendMessage(target) -->
+            <form [formGroup]="formChat" (ngSubmit)="sendMessage(target)">
+                <!-- (ngSubmit)="sendMessage(target)" -->
                 <div class="form-group shadow-none p-3 mb-5 rounded" style="width:auto;  height: 90%; max-height: 650px; overflow-y: auto; overflow-x: hidden;">
                     <!-- Chat -->
                     <div class="row" *ngFor="let msg of array_messages">
@@ -19,8 +19,8 @@
                 </div>
 
                 <div class="background_bar">
-                    <div class="horizontal row">
-                        <button (click)="sendFile()" [matMenuTriggerFor]="menu" class="add">
+                    <form *ngIf="user.type=='Profesor'" class="horizontal row">
+                        <button [matMenuTriggerFor]="menu" class="add">
                         <i class="material-icons">
                             add
                         </i>       
@@ -33,7 +33,7 @@
 
                         </button>
 
-                    </div>
+                    </form>
                     <div class="horizontal">
                         <input formControlName="message" type="text" class=" border border-dark  rounded  text_bar" matInput placeholder="Tu mensaje va aqui">
                     </div>

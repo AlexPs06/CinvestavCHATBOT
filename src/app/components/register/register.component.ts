@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private firabse: FirebaseService,
-
+    
   ) { 
     this.formRegister = this.formbuilder.group({
       username : ['',Validators.required],
@@ -101,7 +101,7 @@ export class RegisterComponent implements OnInit {
     //------------------------------------------------------------------esto es usando la api creada ------------------------------------------------------------------
     let user: User;
     user={
-      username:this.formRegister.get("username").value+" "+this.formRegister.get("lastNameFather").value+""+this.formRegister.get("lastNameMother").value,
+      username:this.formRegister.get("username").value+" "+this.formRegister.get("lastNameFather").value+" "+this.formRegister.get("lastNameMother").value,
       password:this.formRegister.get("password").value,
       email: this.formRegister.get("email").value,
       age: this.formRegister.get("yearsold").value,
@@ -109,7 +109,9 @@ export class RegisterComponent implements OnInit {
       id:null
     }
     this.api.register(user).subscribe(response =>{
-      console.log(response)
+      localStorage.setItem("user", JSON.stringify(user))
+      // localStorage.setItem("token", response.token)
+      this.router.navigateByUrl("Menu")
     }, error=>{
       console.log(error)
 
@@ -125,7 +127,8 @@ export class RegisterComponent implements OnInit {
   sendRegister(){
     
     this.submitted=true;
-    if(this.formRegister.invalid){
+    if(this.formRegister.invalid || (this.formRegister.get("password").value != this.formRegister.get("confirmPassword").value ) ){
+      console.log(this.formRegister.value)
       alert("Error uno o mas campos son requeridos")
       return;
     }
