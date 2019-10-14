@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.clear()
     this.api.getHello().subscribe(response=>{
       console.log(response)
     })

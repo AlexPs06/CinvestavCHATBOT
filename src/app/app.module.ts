@@ -32,6 +32,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AddFilesComponent } from './dialogs/add-files/add-files.component';
+import { RouteGuardGuard } from './guardians/route-guard/route-guard.guard';
+import { LoginRegisterGuard } from './guardians/loginRegister/login-register.guard';
 const angularMaterial=[
   MatCardModule,
   MatButtonModule,
@@ -71,7 +73,7 @@ const angularMaterial=[
     AngularFireStorageModule,
     AngularFireDatabaseModule,     
   ],
-  providers: [],
+  providers: [RouteGuardGuard, LoginRegisterGuard],
   bootstrap: [AppComponent],
   entryComponents: [AlertComponent,AddFilesComponent]
 })
