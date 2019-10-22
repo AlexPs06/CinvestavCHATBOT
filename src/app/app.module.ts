@@ -14,7 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
-import {MatInputModule, MatProgressSpinnerModule} from '@angular/material';
+import {MatInputModule, MatProgressSpinnerModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { MenuComponent } from './components/menu/menu.component';
@@ -34,6 +34,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AddFilesComponent } from './dialogs/add-files/add-files.component';
 import { RouteGuardGuard } from './guardians/route-guard/route-guard.guard';
 import { LoginRegisterGuard } from './guardians/loginRegister/login-register.guard';
+import { ValidateUsersComponent } from './components/validate-users/validate-users.component';
 const angularMaterial=[
   MatCardModule,
   MatButtonModule,
@@ -44,7 +45,9 @@ const angularMaterial=[
   MatDialogModule,
   MatProgressSpinnerModule,
   MatMenuModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 
 ]
 @NgModule({
@@ -58,7 +61,8 @@ const angularMaterial=[
     MenuComponent,
     ChatbotComponent,
     AlertComponent,
-    AddFilesComponent
+    AddFilesComponent,
+    ValidateUsersComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -71,9 +75,10 @@ const angularMaterial=[
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule,     
+    AngularFireDatabaseModule,
+         
   ],
-  providers: [RouteGuardGuard, LoginRegisterGuard],
+  providers: [RouteGuardGuard, LoginRegisterGuard, MatDatepickerModule],
   bootstrap: [AppComponent],
   entryComponents: [AlertComponent,AddFilesComponent]
 })
