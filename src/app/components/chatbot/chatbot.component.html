@@ -9,12 +9,29 @@
                     <div class="row" *ngFor="let msg of array_messages">
                         <p class="col-5 ml-3 xl-2
                                             shadow-sm p-3 mb-5 bg-white rounded 
-                                            rounded-right text-break align-self-start" *ngIf="msg.idUser != currentUser"><strong>{{ msg.name }}:</strong> {{ msg.content }}</p>
+                                            rounded-right text-break align-self-start" *ngIf="msg.idUser != currentUser">
+                            <strong>{{ msg.name }}:</strong> {{ msg.content }}
+                        </p>
+                        <!-- añade un examen de historia a las 4 de la tarde -->
+
+
 
                         <p class=" col-5 mr-3 
                                             rounded-left text-break 
                                             shadow-sm p-3 mb-5 bg-white rounded
                                             align-self-end ml-auto" *ngIf="msg.idUser == currentUser"><strong>{{ msg.name }}:</strong> {{ msg.content }}</p>
+
+
+                        <div *ngIf="msg.dateCondition && msg.idUser != currentUser" class="col-5 ml-3 xl-2 shadow-sm p-3 mb-5 bg-transparent rounded rounded-right text-break align-self-start"> </div>
+                        <p *ngIf="msg.dateCondition && msg.idUser != currentUser" class="col-5 ml-3 xl-2 shadow-sm p-3 mb-5 bg-white rounded rounded-right text-break align-self-start">
+                            Selecciones la fecha
+                            <mat-form-field color="accent">
+                                <input matInput [matDatepicker]="picker" placeholder="Seleccione el dia" disabled (dateInput)="addEvent(msg, $event)" [formControl]="date">
+                                <!-- (dateChange)="addEvent(msg, $event)" -->
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker disabled="{{msg.dateActivate}}" #picker></mat-datepicker>
+                            </mat-form-field>
+                        </p>
                     </div>
                 </div>
 
