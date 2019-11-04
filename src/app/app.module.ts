@@ -24,7 +24,8 @@ import { AlertComponent } from './components/alert/alert.component';
 import { environment } from 'src/environments/environment';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 import { AngularFireModule } from '@angular/fire';
 import {AngularFireDatabaseModule } from '@angular/fire/database';
@@ -35,6 +36,11 @@ import { AddFilesComponent } from './dialogs/add-files/add-files.component';
 import { RouteGuardGuard } from './guardians/route-guard/route-guard.guard';
 import { LoginRegisterGuard } from './guardians/loginRegister/login-register.guard';
 import { ValidateUsersComponent } from './components/validate-users/validate-users.component';
+import { AdminGuardianGuard } from './guardians/admin-guardian/admin-guardian.guard';
+import { UsersLessonsComponent } from './components/users-lessons/users-lessons.component';
+import { LessonsComponent } from './components/lessons/lessons.component';
+import { AddSubjectComponent } from './dialogs/add-subject/add-subject.component';
+
 const angularMaterial=[
   MatCardModule,
   MatButtonModule,
@@ -47,7 +53,9 @@ const angularMaterial=[
   MatMenuModule,
   MatSelectModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatTableModule,
+  MatPaginatorModule
 
 ]
 @NgModule({
@@ -62,7 +70,10 @@ const angularMaterial=[
     ChatbotComponent,
     AlertComponent,
     AddFilesComponent,
-    ValidateUsersComponent
+    ValidateUsersComponent,
+    UsersLessonsComponent,
+    LessonsComponent,
+    AddSubjectComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -78,8 +89,8 @@ const angularMaterial=[
     AngularFireDatabaseModule,
          
   ],
-  providers: [RouteGuardGuard, LoginRegisterGuard, MatDatepickerModule],
+  providers: [RouteGuardGuard, LoginRegisterGuard, MatDatepickerModule, AdminGuardianGuard],
   bootstrap: [AppComponent],
-  entryComponents: [AlertComponent,AddFilesComponent]
+  entryComponents: [AlertComponent,AddFilesComponent, AddSubjectComponent]
 })
 export class AppModule { }

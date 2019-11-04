@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { API, API2 } from 'src/app/app-config'
 import { User } from 'src/app/models/User.model';
+import { Subject } from 'src/app/models/Subject.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -40,7 +41,68 @@ export class APIService {
           
         })
       }
-      return this.http.post(`${this.api}login/`, params, httpOptions); ;
+      return this.http.post(`${this.api}login/`, params, httpOptions);
+    }
+    getUsersNotActivated(){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        })
+      }
+      return this.http.get(`${this.api}users/`, httpOptions);
+    }
+
+    getUsersInLesson(params){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        }),
+        params:params
+      }
+      return this.http.get(`${this.api}lessonsGroupGrade/`, httpOptions);
+    }
+    getSubjectsGrade(params){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        }),
+        params:params
+      }
+      return this.http.get(`${this.api}subjectsGrade/`, httpOptions);
+    }
+
+
+    updateUser(user:User){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        })
+      }
+      return this.http.put(`${this.api}users/${user.id}`,user ,httpOptions);
+    }
+
+    updateSubject(subject:Subject){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        })
+      }
+      return this.http.put(`${this.api}subjects/${subject.id}`,subject ,httpOptions);
+    }
+
+    addSubject(subject:Subject){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        })
+      }
+      return this.http.post(`${this.api}subjects/`,subject ,httpOptions);
     }
   // login(params: any): Observable<any> {
   //   const httpOptions = {

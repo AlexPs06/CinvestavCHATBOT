@@ -34,7 +34,7 @@ describe('MenuComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
-    component.user = new User("alex",12,"luis_pesar@hotmail.com","not","Alumno","1") //Se crea un usuario de prueba para el testing 
+    component.user = new User("alex",12,"luis_pesar@hotmail.com","not","Alumno","1",true) //Se crea un usuario de prueba para el testing 
 
     fixture.detectChanges();
   });

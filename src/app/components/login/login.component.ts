@@ -35,9 +35,12 @@ export class LoginComponent implements OnInit {
     this.api.login(login).subscribe(response=>{
       console.log(response.token)
       let user:User =  response.user;
-      localStorage.setItem("user", JSON.stringify(user))
-      localStorage.setItem("token", response.token)
-      this.router.navigateByUrl("Menu")
+      if(user.activated==true){
+        localStorage.setItem("user", JSON.stringify(user))
+        localStorage.setItem("token", response.token)
+        this.router.navigateByUrl("Menu")
+      }
+      
     },error =>{
       alert(error.error.message)
       console.log(error.error.message)

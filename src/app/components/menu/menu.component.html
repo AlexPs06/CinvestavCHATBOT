@@ -3,12 +3,16 @@
     <app-header></app-header>
     <p *ngIf="typeMenu=='Profesor'" class="title_menu_profesor">Bienvenido profesor {{name}}</p>
     <p *ngIf="typeMenu=='Alumno'" class="title_menu_profesor">Bienvenido alumno {{name}}</p>
+    <p *ngIf="typeMenu=='Administrador'" class="title_menu_profesor">Bienvenido Administrador {{name}}</p>
     <div class="background_menu">
-        <div class=" horizontal">
+
+
+
+        <div *ngIf="typeMenu=='Profesor' || typeMenu== 'Alumno'" class=" horizontal">
             <img src="/assets/pictures/archivos.jpg">
             <button class="button_menu_profesor" type="submit" (click)="Login()" mat-button>Archivos</button>
         </div>
-        <div class="horizontal">
+        <div *ngIf="typeMenu=='Profesor' || typeMenu== 'Alumno'" class="horizontal">
             <img src="/assets/pictures/chatbot.jpg">
             <button class="button_menu_profesor" type="submit" (click)="goToChatbot()" mat-button>Chatbot</button>
         </div>
@@ -16,6 +20,16 @@
         <div *ngIf="typeMenu=='Profesor'" class="horizontal">
             <img src="/assets/pictures/alumnos.jpg">
             <button class="button_menu_profesor" type="submit" (click)="Login()" mat-button>Alumnos</button>
+        </div>
+
+        <div *ngIf="typeMenu=='Administrador'" class="horizontal">
+            <img src="/assets/pictures/alumnos.jpg">
+            <button class="button_menu_profesor" type="submit" (click)="goToValidateUsers()" mat-button>Alumnos</button>
+        </div>
+
+        <div *ngIf="typeMenu=='Administrador'" class="horizontal">
+            <img src="/assets/pictures/archivos.jpg">
+            <button class="button_menu_profesor" type="submit" (click)="goToMaterias()" mat-button>Materias</button>
         </div>
 
     </div>

@@ -4,9 +4,9 @@ import { ChatbotComponent } from './chatbot.component';
 import { HeaderComponent } from '../header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MatCardModule, MatButtonModule, MatToolbarModule, MatInputModule, MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatToolbarModule, MatInputModule, MatIconModule, MatMenuModule, MatDialogModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { User } from 'src/app/models/User.model';
-
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
 const angularMaterial=[
   MatCardModule,
@@ -15,8 +15,10 @@ const angularMaterial=[
   MatInputModule,
   MatIconModule,
   MatMenuModule,
-  MatDialogModule
-
+  MatDialogModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ]
 describe('ChatbotComponent', () => {
   let component: ChatbotComponent;
@@ -30,6 +32,13 @@ describe('ChatbotComponent', () => {
         ReactiveFormsModule,
         RouterTestingModule
       ],
+      providers: [
+        { provide: DateAdapter, useValue: {} },
+        { provide: MAT_DATE_FORMATS, useValue: [] },
+        { provide: MAT_DATE_LOCALE, useValue: [] },
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: [] },
+      ],
       declarations: [ 
         ChatbotComponent,
         HeaderComponent
@@ -41,7 +50,7 @@ describe('ChatbotComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ChatbotComponent);
     component = fixture.componentInstance;
-    component.user = new User("alex",12,"luis_pesar@hotmail.com","not","alumno","1") //Se crea un usuario de prueba para el testing 
+    component.user = new User("alex",12,"luis_pesar@hotmail.com","not","alumno","1", true) //Se crea un usuario de prueba para el testing 
     fixture.detectChanges();
   });
 

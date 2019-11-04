@@ -28,4 +28,11 @@ export class MenuComponent implements OnInit {
   goToChatbot(){
     this.router.navigateByUrl("Chatbot")
   }
+
+  goToMaterias(){
+    this.router.navigateByUrl("Users-lessons")
+  }
+  goToValidateUsers(){
+    this.router.navigateByUrl("Validate-users")
+  }
 }

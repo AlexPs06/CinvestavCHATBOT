@@ -106,6 +106,7 @@ export class RegisterComponent implements OnInit {
       email: this.formRegister.get("email").value,
       age: this.formRegister.get("yearsold").value,
       type:this.formRegister.get("rol").value,
+      activated:null,
       id:null
     }
     this.api.register(user).subscribe(response =>{
@@ -146,7 +147,7 @@ export class RegisterComponent implements OnInit {
   }
 
   testFirebase(){
-    let user:User = new User ("Alex",12,"luis_pesar@hotmail.com","Alejandro1998a","Alumno","")
+    let user:User = new User ("Alex",12,"luis_pesar@hotmail.com","Alejandro1998a","Alumno","",false)
     let id;
     this.firabse.getUsers().subscribe(response=>{
       for (let index = 0; index < response.length; index++) {

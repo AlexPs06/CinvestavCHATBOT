@@ -8,6 +8,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import { RouteGuardGuard } from './guardians/route-guard/route-guard.guard';
 import { LoginRegisterGuard } from './guardians/loginRegister/login-register.guard';
+import { ValidateUsersComponent } from './components/validate-users/validate-users.component';
+import { AdminGuardianGuard } from './guardians/admin-guardian/admin-guardian.guard';
+import { UsersLessonsComponent } from './components/users-lessons/users-lessons.component';
 
 const routes: Routes = [
   { path: 'xyz', component: XyzComponent, },
@@ -19,6 +22,8 @@ const routes: Routes = [
   { path: 'notFound', redirectTo: "not_found" },
   { path: 'Menu', component: MenuComponent, canActivate:[RouteGuardGuard] },
   { path: 'Chatbot', component: ChatbotComponent, canActivate:[RouteGuardGuard] },
+  { path: 'Validate-users', component: ValidateUsersComponent, canActivate:[AdminGuardianGuard] },
+  { path: 'Users-lessons', component: UsersLessonsComponent, canActivate:[AdminGuardianGuard] },
 
 ];
 

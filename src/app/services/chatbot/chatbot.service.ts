@@ -13,27 +13,36 @@ export class ChatbotService {
   readonly tokenProfesor = environment.dialogflow.cinvestavChatbotProfesor;
   client;
   conversation = new BehaviorSubject<Message[]>([]);
-
+  user:User=JSON.parse(localStorage.getItem("user"))
   constructor() {
-    let user:User= JSON.parse(localStorage.getItem("user"))
-    if(user.type=="Profesor"){
+    
+    
+  }
+   converse(msg: String) {
+    if(this.user.type=="Profesor"){
       this.client = new ApiAiClient({ accessToken: this.tokenProfesor });
     }
-    if(user.type=="Alumno"){
+    if(this.user.type=="Alumno"){
 
       this.client = new ApiAiClient({ accessToken: this.token });
     }
-  }
-   converse(msg: String) {
     return this.client.textRequest(msg)
                .then(res => {
                   const speech = res.result.fulfillment.speech;
                   const botMessage = new Message(speech, 'bot','bot' );
                   return botMessage
                });
+
   }
 
   talk(){
+    if(this.user.type=="Profesor"){
+      this.client = new ApiAiClient({ accessToken: this.tokenProfesor });
+    }
+    if(this.user.type=="Alumno"){
+
+      this.client = new ApiAiClient({ accessToken: this.token });
+    }
     this.client.textRequest("hola").then(response=>{
       console.log(response.result.fulfillment.speech);
     })
