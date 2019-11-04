@@ -8,6 +8,7 @@ export class User{
    * @param email es el email del usuario
    * @param password es la contraseña del usuario 
    * @param type es el tipo del usuario
+   * @param activated es el tipo del usuario
    */
    
     constructor (
@@ -17,7 +18,7 @@ export class User{
       public password:String,
       public type:String,
       public id:String,
-
+      public activated: Boolean
     ){
 
     }
