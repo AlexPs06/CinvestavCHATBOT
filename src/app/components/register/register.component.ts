@@ -111,7 +111,7 @@ export class RegisterComponent implements OnInit {
     }
     this.api.register(user).subscribe(response =>{
       localStorage.setItem("user", JSON.stringify(user))
-      // localStorage.setItem("token", response.token)
+      // localStorage.setItem("token", response.token) 
       this.router.navigateByUrl("Menu")
     }, error=>{
       console.log(error)
