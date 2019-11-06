@@ -28,9 +28,9 @@
                     </p>
                     <input type="password" class="input_register" autocomplete="off" matInput placeholder="Password" formControlName="password">
                     <input type="password" class="input_register" autocomplete="off" matInput placeholder="Confirm password" formControlName="confirmPassword">
-                    <p *ngIf="error" class="error">
+                    <!-- <p *ngIf="error" class="error">
                         {{ error }}
-                    </p>
+                    </p> -->
 
                     <div class="button">
                         <button class="button_register" [disabled]="formRegister.invalid" type="submit" mat-button>Registrarse</button>
