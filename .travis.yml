@@ -21,7 +21,7 @@ before_script:
   - npm ci
 script:
   - ng test --watch=false --no-progress --browsers=ChromeHeadlessCI
-  - ng build 
+  - ng build --prod
 
 
 after_success:

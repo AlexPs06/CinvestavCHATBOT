@@ -52,6 +52,15 @@ export class APIService {
       }
       return this.http.get(`${this.api}users/`, httpOptions);
     }
+    getUsersActivatedNotInLesson(){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        })
+      }
+      return this.http.get(`${this.api}users/`, httpOptions);
+    }
 
     getUsersInLesson(params){
       const httpOptions = {
@@ -73,7 +82,15 @@ export class APIService {
       }
       return this.http.get(`${this.api}subjectsGrade/`, httpOptions);
     }
-
+    getUsersNotLesson(){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        }),
+      }
+      return this.http.get(`${this.api}usersNotLesson/`, httpOptions);
+    }
 
     updateUser(user:User){
       const httpOptions = {
@@ -104,34 +121,15 @@ export class APIService {
       }
       return this.http.post(`${this.api}subjects/`,subject ,httpOptions);
     }
-  // login(params: any): Observable<any> {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //     })
-  //   }
-  //   return this.http.post(`${this.api}login/`, params, httpOptions)
-  // }
- 
-  // editUnidades(params: any, id): Observable<any>{
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       'Authorization':'Token '+localStorage.getItem('token')
-  //     })
-  //   }
-
-  //   return this.http.put(`${this.api}unidades/${id}`, params, httpOptions)
-  // }
-
-  // getEquipos(): Observable<any> {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       'Authorization':'Token '+localStorage.getItem('token')
-  //     })
-  //   }
-  //   return this.http.get(`${this.api}registro/`, httpOptions)
-  // }
+    
+    deleteLessonIdUser(id){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          
+        })
+      }
+      return this.http.delete(`${this.api}lessonsIdUser/${id}`,httpOptions);
+    }
 
 }

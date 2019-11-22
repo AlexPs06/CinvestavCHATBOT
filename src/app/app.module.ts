@@ -26,6 +26,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 import { AngularFireModule } from '@angular/fire';
 import {AngularFireDatabaseModule } from '@angular/fire/database';
@@ -40,8 +42,10 @@ import { AdminGuardianGuard } from './guardians/admin-guardian/admin-guardian.gu
 import { UsersLessonsComponent } from './components/users-lessons/users-lessons.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
 import { AddSubjectComponent } from './dialogs/add-subject/add-subject.component';
+import { AddStudentComponent } from './dialogs/add-student/add-student.component';
 
 const angularMaterial=[
+  MatCheckboxModule,
   MatCardModule,
   MatButtonModule,
   MatToolbarModule,
@@ -73,7 +77,8 @@ const angularMaterial=[
     ValidateUsersComponent,
     UsersLessonsComponent,
     LessonsComponent,
-    AddSubjectComponent
+    AddSubjectComponent,
+    AddStudentComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -91,6 +96,6 @@ const angularMaterial=[
   ],
   providers: [RouteGuardGuard, LoginRegisterGuard, MatDatepickerModule, AdminGuardianGuard],
   bootstrap: [AppComponent],
-  entryComponents: [AlertComponent,AddFilesComponent, AddSubjectComponent]
+  entryComponents: [AlertComponent,AddFilesComponent, AddSubjectComponent, AddStudentComponent]
 })
 export class AppModule { }

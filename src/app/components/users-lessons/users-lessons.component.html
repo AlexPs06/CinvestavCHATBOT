@@ -27,127 +27,147 @@
         </mat-toolbar-row>
     </div>
 
-
-    <!-- <app-lessons></app-lessons> -->
-
-    <mat-form-field>
-        <input matInput (keyup)="applyFilterLesson($event.target.value)" placeholder="Filter">
-    </mat-form-field>
-
-    <div class="subjects mat-elevation-z8">
-        <table class="subjectsTable" mat-table [dataSource]="dataSourceLessons" matSort>
-
-            <!-- ID Column -->
-            <ng-container matColumnDef="id">
-                <th class="celdas" mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td class="celdas" mat-cell *matCellDef="let row"> {{row.id}} </td>
-            </ng-container>
-
-            <!-- Progress Column -->
-            <ng-container matColumnDef="name">
-                <th class="celdas" mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-                <td class="celdas" mat-cell *matCellDef="let row"> {{row.name}} </td>
-            </ng-container>
-
-
-            <!-- Color Column -->
-            <ng-container matColumnDef="grade">
-                <th class="celdas" mat-header-cell *matHeaderCellDef mat-sort-header> Grado </th>
-                <td class="celdas" mat-cell *matCellDef="let row"> {{row.grade}} </td>
-            </ng-container>
-
-
-            <!-- Color Column -->
-            <ng-container matColumnDef="deleted">
-                <th class="celdas" mat-header-cell *matHeaderCellDef mat-sort-header> Eliminar </th>
-                <td class="celdas" mat-cell *matCellDef="let row"> <button mat-flat-button color="warn" (click)="deleted(row)">Desactivar</button> </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumnsLessons"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumnsLessons;">
-            </tr>
-        </table>
-        <button *ngIf="gradeSelected" mat-raised-button (click)="addSubject()"> Añadir materia </button>
-
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]">
-            <button *ngIf="gradeSelected" mat-flat-button color="warn">Desactivar</button>s
-        </mat-paginator>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <br>
     <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
 
 
-    <div class="example-container mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
-
-            <!-- ID Column -->
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-                <td mat-footer-cell *matFooterCellDef></td>
-            </ng-container>
-
-            <!-- Progress Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-                <td mat-cell *matCellDef="let row"> {{row.username}} </td>
-                <td mat-footer-cell *matFooterCellDef></td>
-            </ng-container>
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="grade">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Grado </th>
-                <td mat-cell *matCellDef="let row"> {{row.grade}} </td>
-                <td mat-footer-cell *matFooterCellDef></td>
-            </ng-container>
-
-            <!-- Color Column -->
-            <ng-container matColumnDef="group">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Grupo </th>
-                <td mat-cell *matCellDef="let row"> {{row.group}} </td>
-                <td mat-footer-cell *matFooterCellDef></td>
-            </ng-container>
-
-            <!-- Disclaimer column -->
-            <ng-container matColumnDef="disclaimer">
-                <td mat-footer-cell *matFooterCellDef colspan="2">
-                    <button *ngIf="gradeSelected" mat-raised-button (click)="addSubject()"> Añadir Alumno </button>
-                </td>
-            </ng-container>
+    <br>
+    <div class="row containerTables">
+        <div class="subjects ">
+            <mat-table class="subjectsTable" mat-table [dataSource]="dataSourceLessons" matSort>
 
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-            </tr>
 
-            <tr mat-footer-row *matFooterRowDef="displayedColumns" class="example-first-footer-row"></tr>
-            <tr mat-footer-row *matFooterRowDef="['disclaimer']" class="example-second-footer-row"></tr>
-        </table>
+                <!-- Progress Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell class="celdas" *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                    <mat-cell class="celdas" *matCellDef="let row"> {{row.name}} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                </ng-container>
+
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="grade">
+                    <mat-header-cell class="celdas" *matHeaderCellDef mat-sort-header> Grado </mat-header-cell>
+                    <mat-cell class="celdas" *matCellDef="let row"> {{row.grade}} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+
+                </ng-container>
+
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="deleted">
+                    <mat-header-cell class="celdas" *matHeaderCellDef mat-sort-header> Eliminar </mat-header-cell>
+                    <mat-cell class="celdas" *matCellDef="let row"> <button mat-flat-button color="warn" (click)="deleted(row)">Desactivar</button> </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumnsLessons"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumnsLessons;">
+                </mat-row>
+
+
+                <ng-container matColumnDef="disclaimer">
+                    <mat-footer-cell *matFooterCellDef colspan="2">
+                        <button *ngIf="gradeSelected" mat-raised-button (click)="addSubject()"> Añadir materia </button>
+                    </mat-footer-cell>
+                </ng-container>
+
+                <mat-footer-row *matFooterRowDef="displayedColumnsLessons; sticky: true" class="example-first-footer-row"></mat-footer-row>
+                <mat-footer-row *matFooterRowDef="['disclaimer']" class="example-second-footer-row"></mat-footer-row>
+            </mat-table>
+
+
+
+
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"> </mat-paginator>
+        </div>
+
+
+
+        <br>
+
+
+        <!-- mat-elevation-z8 -->
+        <div class="example-container ">
+            <button mat-raised-button color="primary" (click)="removeSelectedRows()">
+                        Remove Selected Rows
+                      </button>
+            <mat-table mat-table [dataSource]="dataSource" matSort style="overflow: auto; max-height: 300px;">
+
+
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                    <mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+                        </mat-checkbox>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                        </mat-checkbox>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+
+                </ng-container>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                    <mat-cell mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <!-- Grade Column -->
+                <ng-container matColumnDef="grade">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Grado </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.grade}} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <!-- Group Column -->
+                <ng-container matColumnDef="group">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Grupo </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.group}} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <!-- Delet Column -->
+
+                <ng-container matColumnDef="delet">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Eliminar </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> <button mat-raised-button color="warn" (click)="deleteStudent(row)"> Eliminar</button> </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <!-- Disclaimer column -->
+                <ng-container matColumnDef="disclaimer">
+                    <mat-cell mat-footer-cell *matFooterCellDef colspan="2">
+                        <button *ngIf="gradeSelected" mat-raised-button (click)="addStudent()"> Añadir Alumno </button>
+                    </mat-cell>
+                </ng-container>
+
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+
+                <mat-footer-row mat-footer-row *matFooterRowDef="displayedColumns; sticky: true" class="example-first-footer-row"></mat-footer-row>
+                <mat-footer-row *matFooterRowDef="['disclaimer']" class="example-second-footer-row"></mat-footer-row>
+            </mat-table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
     </div>
 </div>
