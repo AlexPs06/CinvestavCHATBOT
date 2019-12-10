@@ -1,12 +1,7 @@
-<!-- <mat-toolbar class="toolbar">
-    <mat-toolbar-row>
-        <span>Custom Toolbar</span>
-    </mat-toolbar-row>
-</mat-toolbar> -->
-
-
+<!--nav bar -->
 <mat-toolbar class="toolbar">
     <mat-toolbar-row>
+        <!--Menu -->
         <span>ChatBot</span>
         <span class="example-fill-remaining-space"></span>
         <span class="align-center"></span>
@@ -17,6 +12,8 @@
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
+        <!--/Menu-->
+        <!--Menu sin uso-->
         <mat-menu #menu="matMenu">
             <button mat-menu-item>
             <mat-icon>dialpad</mat-icon>
@@ -31,11 +28,6 @@
             <span>Disable alerts</span>
           </button>
         </mat-menu>
+        <!--/Menu sin uso-->
+
     </mat-toolbar-row>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-danger">
-    <mat-toolbar class="toolbar">
-        <mat-toolbar-row>
-            <span>Custom Toolbar</span>
-        </mat-toolbar-row>
-    </mat-toolbar>
-</nav> -->

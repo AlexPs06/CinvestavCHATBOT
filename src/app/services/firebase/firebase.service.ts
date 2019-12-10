@@ -9,12 +9,21 @@ import { AngularFireDatabase } from '@angular/fire/database';
   providedIn: 'root'
 })
 export class FirebaseService {
+  /**
+   * Constructor de la clase
+   * @param firestore clase de firebase para guardar datos en firestore
+   * @param database clase de firebase en angular para guardar datos en database fire
+   */
   constructor( 
     private firestore: AngularFirestore, //firebase para usar firestore
     private database: AngularFireDatabase
     ) {
      }
 
+     /**
+      * Funcion para guardar un archivo en firebase
+      * @param file arhivo a guardar de firebase este es un json de tipo file
+      */
     addFiles(file):Boolean{
       this.database.database.ref("Material").push(file).then(response=>{
         return true;
@@ -26,6 +35,10 @@ export class FirebaseService {
     }
 
 
+    /**
+     * Función para guardar un usuario e firebase se hizo se probo pero actualmente los usuarios ya no se almacenan ahi  
+     * @param data objeto tipo usuario  
+     */
     addUser(data:User) {
     let id;
     return new Promise<any>((resolve, reject) =>{
@@ -39,12 +52,19 @@ export class FirebaseService {
         
     });
   }
+  /**
+   * Función para obtener los usuarios de firebase
+   */
   getUsers() { 
     
     return this.firestore.collection("usuarios/").snapshotChanges();
   }
  
- //esta en proceso 
+ /**
+  * Función para actualizar un usuario esta funcion esta en proceso 
+  * @param id id del usuario a actualizar 
+  * @param user usuario a actualizar 
+  */ 
   updateUser(id, user:User) {
     return this.firestore
         .collection("usuarios/")

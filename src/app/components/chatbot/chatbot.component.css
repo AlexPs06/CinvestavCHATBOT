@@ -1,3 +1,5 @@
+/* */
+
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 .image_background {
     position: absolute !important;
@@ -20,8 +22,6 @@
 
 .send {
     position: absolute;
-    /* width: 100px;
-    height: 100px; */
     right: 1%;
     bottom: 15%;
     background: none;
@@ -30,8 +30,6 @@
 .add {
     background: none;
     position: absolute;
-    /* width: 100px;
-    height: 100px; */
     left: 1%;
     bottom: 15%;
 }
@@ -98,7 +96,6 @@
 }
 
 .background_wor_in_chat {
-    /* float: left; */
     display: table-row;
     left: 0px;
 }

@@ -11,8 +11,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddFilesComponent implements OnInit {
 
+  /**
+   * form con los datos del archivo
+   */
   formFile:FormGroup;
+
+  /**
+   * variable que indica si ya se envio la respuesta
+   */
   enviado:Boolean;
+
+  /**
+   * Variable que tiene los datos a guardar del archivo
+   * @param url la url de donde se ubica el archivo
+   * @param descripcion la descripcion del archivo
+   * @param grado el grado para los alumnos del archivo
+   * @param grupo el grupo para los alumnos del archivo
+   * @param materia la materia a la que pertenece el archivo
+   */
   data={
     url:"",
     descripcion:"",
@@ -20,6 +36,13 @@ export class AddFilesComponent implements OnInit {
     grupo: "",
     materia:"Materia",
   };
+  /**
+   * 
+   * @param formBuilder Contructor base de un form
+   * @param dialogRef variable para hacer la referencia al dialogo 
+   * @param firebase variable de la conexion con firebase
+   * @param message mensaje a recibir de la ventana que invoca al dialog
+   */
   constructor(
     public formBuilder: FormBuilder,
     public dialogRef : MatDialogRef<AddFilesComponent>,
@@ -37,12 +60,18 @@ export class AddFilesComponent implements OnInit {
 
   }
 
+  /**
+   * Funcion para cerrar el dialog 
+   */
   onClickNo():void{
     this.dialogRef.close()
   }
   ngOnInit() {
   }
 
+  /**
+   * Funcion para enviar el archivo
+   */
   sendFile(){
     this.data=this.formFile.value;
     let response:Boolean = this.firebase.addFiles(this.data);

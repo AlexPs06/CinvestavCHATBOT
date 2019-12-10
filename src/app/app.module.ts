@@ -44,6 +44,9 @@ import { LessonsComponent } from './components/lessons/lessons.component';
 import { AddSubjectComponent } from './dialogs/add-subject/add-subject.component';
 import { AddStudentComponent } from './dialogs/add-student/add-student.component';
 
+/**
+ * Variable para importar todas las librerias de angular material
+ */
 const angularMaterial=[
   MatCheckboxModule,
   MatCardModule,

@@ -7,13 +7,17 @@ import { Message } from 'src/app/models/Message.model';
 import { MatDialog, MatDatepickerInputEvent } from '@angular/material';
 import { AddFilesComponent } from 'src/app/dialogs/add-files/add-files.component';
 
-
 import * as _moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+/**
+ * variable para obtneer el dia
+ */
 const moment = _moment;
 
+/**
+ * Fomato del date picker 
+ */
 export const MY_FORMATS = {
   parse: {
     dateInput: 'LL',
@@ -29,24 +33,49 @@ export const MY_FORMATS = {
   selector: 'app-chatbot',
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.css'],
-  providers: [
-    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
-    // application's root module. We provide it at the component level here, due to limitations of
-    // our example generation script.
+  providers: 
+  [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
 })
 
-export class ChatbotComponent implements OnInit {
 
+export class ChatbotComponent implements OnInit {
+ 
+
+  /**
+   * @param date es el parametro con el cual obtenemos la fecha del datepicker ´date´
+  */
   date = new FormControl(moment());
+  
+  /**
+   * @param formChat form del chat cuenta con el atributo message
+   */
   formChat:FormGroup;
+  
+  /**
+   *  @param array_messages arreglo que contiene en el todos los mensajes enviados en esa conversacion con el chatbot
+   */
   array_messages: Message[]=[];
+
+  /**
+   * @param currentUser es el id del usuario actual del uso del sistema
+   */
   currentUser:String ="";
+  
+  /**
+   * @param user es el usuario actual del sistema este valor cuenta con todos los atributos de la clase usuario
+   */
   user:User = JSON.parse(localStorage.getItem("user"))
 
+  
+  /**
+   * Constructuor de la clase
+   * @param formbuilder contructor base de un form
+   * @param chabtot es el servicio con el cual podemos interactuar con el chatbot
+   * @param dialog es el parametro que nos permite hacer uso de los dialog en esta clase
+   */
   constructor(
     private formbuilder : FormBuilder,
     private chabtot: ChatbotService,
@@ -57,10 +86,16 @@ export class ChatbotComponent implements OnInit {
     })
    }
 
+   /**
+    * Metodo que se ejecuta cuando se crea la ventana
+    */
   ngOnInit() {
     this.currentUser=this.user.id
     
   }
+  /**
+   * Metodo para enviar mensaje al bot por parte del usuario
+   */
   sendMessage(){
     let value = this.formChat.get("message").value
     let mensajeUsuario:Message = new Message (value, this.user.id, this.user.username) ;
@@ -76,7 +111,11 @@ export class ChatbotComponent implements OnInit {
     })
     this.formChat.reset();
   }
-
+  /**
+   * Metodo para enviar un mensaje al bot por medio de un parametro, no usa el valor obtenido del form
+   * @param data mensaje a enviar por parte del usuario 
+   * @event addEvent se ejecuta exclusivamente despues de la funcion addEvent
+   */
   sendMessageBot(data){
     let value = data
     let mensajeUsuario:Message = new Message (value, this.user.id, this.user.username) ;
@@ -92,7 +131,9 @@ export class ChatbotComponent implements OnInit {
     })
     this.formChat.reset();
   }
-
+  /**
+   * Metodo para abrir un dialog en este caso es el de añadir un archivo
+   */
   openDialogAddFile(){
     const dialogRef = this.dialog.open(AddFilesComponent);
     dialogRef.afterClosed().subscribe(response=>{
@@ -106,8 +147,12 @@ export class ChatbotComponent implements OnInit {
       }      
     })
   }
+  /**
+   * Metodo para obtener la fecha de un calendario 
+   * @param data fecha obtenida 
+   * @param event datepicker del cual se obtiene dicha fecha. 
+   */
   addEvent(data: Message, event: MatDatepickerInputEvent<Date>) {
-    // this.events.push(`${type}: ${event.value}`);
     console.log("evento date picker")
     data.dateActivate=true
     let temp:string =`${event.value}`

@@ -7,30 +7,41 @@
     <div class="background_menu">
 
 
-
+        <!-- Boton para ver archivos -->
         <div *ngIf="typeMenu=='Profesor' || typeMenu== 'Alumno'" class=" horizontal">
             <img src="/assets/pictures/archivos.jpg">
             <button class="button_menu_profesor" type="submit" mat-button>Archivos</button>
         </div>
+        <!-- /Boton para ver archivos -->
+
+        <!-- Boton para entrar al chatbot -->
+
         <div *ngIf="typeMenu=='Profesor' || typeMenu== 'Alumno'" class="horizontal">
             <img src="/assets/pictures/chatbot.jpg">
             <button class="button_menu_profesor" type="submit" (click)="goToChatbot()" mat-button>Chatbot</button>
         </div>
+        <!-- /Boton para entrar al chatbot -->
 
+        <!-- Boton para ver alumnos desde el profesor-->
         <div *ngIf="typeMenu=='Profesor'" class="horizontal">
             <img src="/assets/pictures/alumnos.jpg">
             <button class="button_menu_profesor" type="submit" mat-button>Alumnos</button>
         </div>
+        <!-- /Boton para ver alumnos desde el profesor-->
 
+        <!-- Boton para ver alumnos como administrador-->
         <div *ngIf="typeMenu=='Administrador'" class="horizontal">
             <img src="/assets/pictures/alumnos.jpg">
             <button class="button_menu_profesor" type="submit" (click)="goToValidateUsers()" mat-button>Alumnos</button>
         </div>
+        <!-- Boton para ver alumnos como administrador-->
 
+        <!-- Boton para ver materias-->
         <div *ngIf="typeMenu=='Administrador'" class="horizontal">
             <img src="/assets/pictures/archivos.jpg">
             <button class="button_menu_profesor" type="submit" (click)="goToMaterias()" mat-button>Materias</button>
         </div>
+        <!-- /Boton para ver materias-->
 
     </div>
 </div>

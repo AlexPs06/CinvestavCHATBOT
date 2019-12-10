@@ -2,27 +2,21 @@
     <app-header></app-header>
 
     <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-sm-9 offset-sm-1 col-xl-4 offset-xl-8 background_login transparent ">
-
-
         <div class="centrado">
             <div>
                 <div class="circulo_login">
                 </div>
             </div>
+            <!-- Form para enviar los datos para iniciar sesion -->
             <div>
                 <form [formGroup]="formLogin" autocomplete="off" (ngSubmit)="sendLogin()">
                     <p>
-
                         <input type="email" class="input_login" placeholder="Email" formControlName="email">
                     </p>
 
                     <p>
                         <input type="password" class="input_login" placeholder="Password" formControlName="password">
                     </p>
-
-                    <!-- <p *ngIf="error" class="error">
-                        {{ error }}
-                    </p> -->
 
                     <div class="button">
                         <button class="button_login" type="submit" mat-button>Iniciar sesión</button>

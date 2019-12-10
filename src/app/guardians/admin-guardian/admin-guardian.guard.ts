@@ -7,8 +7,13 @@ import { User } from 'src/app/models/User.model';
   providedIn: 'root'
 })
 export class AdminGuardianGuard implements CanActivate {
+  /**
+   * 
+   * @param router parametro que permite moverte entre rutas
+   */
   constructor(private router: Router) {}
 
+ 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let user:User = JSON.parse(localStorage.getItem("user"))
     if(user.type=='Administrador'){

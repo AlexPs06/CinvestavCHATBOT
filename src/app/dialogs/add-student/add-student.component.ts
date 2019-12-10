@@ -18,14 +18,35 @@ export class AddStudentComponent implements OnInit {
   formStudent:FormGroup;
 
   selection = new SelectionModel<any>(true, []);
-
+/**
+ * Arreglo de estudiantes
+ */
   arrayStudents: Array<User>;
+
+  /**
+   * variable que indica si ya se busco un estudiante 
+   */
   estudiantes: Boolean =false;
+  
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  /**
+   * columnas de la tabla
+   */
   displayedColumns: string[] = ['select','id', 'name','grade', 'group'];
+  
+  /**
+   * tabla con los datos de los estudiantes
+   */
   dataSource: MatTableDataSource<User>;
  
+
+  /**
+   *  Propiedad que sirve para tener los grados de los alumnos
+   * @param value es el valor que tendra como tal la seleccion 
+   * @param viewValue es el valor que que se muestra para la seleccion 
+   * 
+   */
   grades:Grade[] = [
     {value: '1', viewValue:"1°"},
     {value: '2', viewValue:"2°"},
@@ -34,6 +55,13 @@ export class AddStudentComponent implements OnInit {
     {value: '5', viewValue:"5°"},
     {value: '6', viewValue:"6°"}
   ];
+
+  /**
+   * Propiedad que indica el grupo al que pertenece el estudiante
+   * @param value es el valor que tendra como tal la seleccion 
+   * @param viewValue es el valor que que se muestra para la seleccion 
+   * 
+   */
   groups:Group[] = [
     {value: 'A', viewValue:"A"},
     {value: 'B', viewValue:"B"},
@@ -42,6 +70,13 @@ export class AddStudentComponent implements OnInit {
     {value: 'E', viewValue:"E"},
     {value: 'F', viewValue:"F"}
   ];
+
+  /**
+   * 
+   * @param api Conexion a la base de datos
+   * @param formBuilder Constructor clasico de un form 
+   * @param data informacion que viene del que invoco al dialog 
+   */
   constructor(
     private api: APIService,
     public formBuilder: FormBuilder,
@@ -81,6 +116,11 @@ export class AddStudentComponent implements OnInit {
     }
 
   }
+
+  /**
+   * Funcion para bucar un valor en la tabla 
+   * @param filterValue Valor a filtrar en la busqueda
+   */
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -88,22 +128,32 @@ export class AddStudentComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
   check(){
     console.log("entre"); 
     console.log(this.formStudent.value);
   
   }
-  
+  /**
+   * Función que compureba si todo ha sido seleccionado en una pagina
+   */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
+
+  /**
+   * Función para seleccionar
+   */
   masterToggle() {
     this.isAllSelected() ?
       this.selection.clear() :
       this.dataSource.data.forEach(row => this.selection.select(row));
   }
+  /**
+   * Funcion para remover las filas seleccionadas
+   */
   async removeSelectedRows() {
     this.selection.selected.forEach(item => {
       let index: number = this.arrayStudents.findIndex(d => d === item);

@@ -10,8 +10,23 @@ import { User } from 'src/app/models/User.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  /**
+   * @param formLogin form del llgin que tiene los atributos email y password
+   */
   formLogin : FormGroup;
+
+  /**
+   * @param submit valida el form que este correcto
+   */
   submit=false;
+
+
+  /**
+   * Constructor de la clase
+   * @param formbuilder constructor clasico de un form
+   * @param router varibale para navegar en las rutas
+   * @param api variable que sirve para realizar las peticiones de la api de la base de datos
+   */
 
   constructor(
     private formbuilder : FormBuilder,
@@ -24,12 +39,18 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  /**
+   * Metodo que se ejecuta cuando se crea la vista ejecuta un comando de prueba 
+   */
   ngOnInit() {
     localStorage.clear()
     this.api.getHello().subscribe(response=>{
       console.log(response)
     })
   }
+  /**
+   * Metodo que comprueba al usuario que va a iniciar sesion 
+   */
   comprobarLogin(){
     let login=this.formLogin.value;
     this.api.login(login).subscribe(response=>{
@@ -48,6 +69,9 @@ export class LoginComponent implements OnInit {
     })
 
   }
+  /**
+   * Metodo que comprueba la validez del form del login y ejecuta comprobar login 
+   */
   sendLogin(){
     this.submit=true;
     if(this.formLogin.invalid){
@@ -61,6 +85,9 @@ export class LoginComponent implements OnInit {
 
     
   }
+  /**
+   * Metodo para redirigir a la vista del register
+   */
   register(){
     this.router.navigateByUrl("Register")
   }

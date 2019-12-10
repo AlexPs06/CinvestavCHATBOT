@@ -8,20 +8,40 @@ import { APIService } from 'src/app/services/api/api.service';
   templateUrl: './lessons.component.html',
   styleUrls: ['./lessons.component.css']
 })
-export class LessonsComponent implements OnInit {
 
+/**
+ * Clase del componente de clases del sistema
+ */
+export class LessonsComponent implements OnInit {
+  /**
+   * es el arreglo que contiene todos los usuarios a mostrar en la tabla
+   */
   array: Array<User>;
+  
+  /**
+   * columnas con las que cuenta la tabla
+   */
   displayedColumns: string[] = ['id', 'name', 'activated', ];
+  
+  /**
+   * Tabla donde estan los datos es de tipo usuario
+   */
   dataSource: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  /**
+   * @param api es la api con la que contactamos con la base de datos
+   */
   constructor(
     private api: APIService,
   ) {
 
   }
 
+  /**
+   * Funcion que se ejecuta cuando se crtea la vista en este caso hace una llamada a la base de datos por todos los usuarios no activados
+   */
   ngOnInit() {
     
     this.api.getUsersNotActivated().subscribe(response=>{
@@ -36,12 +56,23 @@ export class LessonsComponent implements OnInit {
 
     
   }
+
+  /**
+   * Metodo para cambiar el estatus de un usuario
+   * @param activated nuevo valor el cual tendra el usuario este puede ser falso o verdadero 
+   * @param user usuario al cual sera asignado el nuevo valor es de tipo usuario
+   */
   changeActivated(activated:Boolean, user : User){
     user.activated=activated;
     this.api.updateUser(user).subscribe(response=>{
       console.log(response)
     })
   }
+  /**
+   * Metodo para cambiar los pivilegios del usuario
+   * @param type tipo de privilegios a otorgar estos pueden ser Alumno Profesor o Administrador
+   * @param user Usuario al que se le otrogaran los privilegios
+   */
   changeType(type:String, user : User){
     
     user.type=type;
@@ -50,6 +81,10 @@ export class LessonsComponent implements OnInit {
     })
   }
 
+  /**
+   * Metodo para filtrar datos de la tabla
+   * @param filterValue valor por el cual filtrar los datos de la tabla
+   */
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 

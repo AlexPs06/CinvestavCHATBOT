@@ -12,16 +12,28 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
   styleUrls: ['./register.component.css']
 })
 
-/**
- * Clase para el registro de usuarios
- *  @param formRegister es el register 
- */
+
 export class RegisterComponent implements OnInit {
   
+  /**
+   * @param formRegister es el register 
+   */
   formRegister : FormGroup; 
-  submitted=false; //es la variable que indica si existe algun error en el formulario de existir su valor se vuelve True
-  rols: string[] = ['Profesor', 'Alumno']; // roles existeneste en el registro
-  alertComponentRef:MatDialogRef<AlertComponent>; // componente de alerta todavia no esta terminado
+
+  /**
+   * @param submitted es la variable que indica si existe algun error en el formulario de existir su valor se vuelve True
+   */
+  submitted=false; 
+  
+  /**
+   * @param roles son los roles existentes para el registro
+   */
+  rols: string[] = ['Profesor', 'Alumno']; 
+  
+  /**
+   * @param alertComponentRef componente de alerta todavia no esta terminado
+   */
+  alertComponentRef:MatDialogRef<AlertComponent>; 
 
   /**
    * Constructor de la clase del registro en el se instancian las variables importadas
@@ -29,6 +41,7 @@ export class RegisterComponent implements OnInit {
    * @param formbuilder constructor del formRegister, esta variable solo se encarga de eso
    * @param router es la variable que permite movernos entre vistas de la aplicación
    * @param dialog es la alerta esta variable permite mostrar las alertas todavia esta en desarrollo esa parte
+   * @param firabse variable para conectar con el servicio de firebase
    */
   constructor(
     private api: APIService,
@@ -81,24 +94,6 @@ export class RegisterComponent implements OnInit {
    * Permite realizar el registro del usuario
    */
   register(){
-    
-    //registrarse usando firebase 
-    // let user;
-    // user={
-    //   username:this.formRegister.get("username").value+" "+this.formRegister.get("lastNameFather").value+" "+this.formRegister.get("lastNameMother").value,
-    //   password:this.formRegister.get("password").value,
-    //   email: this.formRegister.get("email").value,
-    //   age: this.formRegister.get("yearsold").value,
-    //   type:this.formRegister.get("rol").value,
-    //   id:null
-    // }
-    // this.firabse.addUser(user)
-    // .then(res => {
-    //   console.log(res)
-
-    // });
-
-    //------------------------------------------------------------------esto es usando la api creada ------------------------------------------------------------------
     let user: User;
     user={
       username:this.formRegister.get("username").value+" "+this.formRegister.get("lastNameFather").value+" "+this.formRegister.get("lastNameMother").value,
@@ -146,6 +141,9 @@ export class RegisterComponent implements OnInit {
     this.router.navigateByUrl("Login")
   }
 
+  /**
+   * Funcion para probar el guardado de datos en firebase
+   */
   testFirebase(){
     let user:User = new User ("Alex",12,"luis_pesar@hotmail.com","Alejandro1998a","Alumno","",false)
     let id;

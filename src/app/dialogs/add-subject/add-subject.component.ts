@@ -11,10 +11,24 @@ import { Grade, Group } from 'src/app/components/users-lessons/users-lessons.com
 })
 export class AddSubjectComponent implements OnInit {
 
- 
+ /**
+  * Form con los datos del archivo a subir
+  */
   formFile:FormGroup;
+
+  /**
+   * Variable que comprueba que ya se envio
+   */
   enviado:Boolean;
 
+
+  
+  /**
+   *  Propiedad que sirve para tener el grado al que pertenecera el archivo 
+   * @param value es el valor que tendra como tal la seleccion 
+   * @param viewValue es el valor que que se muestra para la seleccion 
+   * 
+   */
   grades:Grade[] = [
     {value: '1', viewValue:"1°"},
     {value: '2', viewValue:"2°"},
@@ -23,6 +37,13 @@ export class AddSubjectComponent implements OnInit {
     {value: '5', viewValue:"5°"},
     {value: '6', viewValue:"6°"}
   ];
+
+  /**
+   * Propiedad que indica el grupo al que pertenece el archivo
+   * @param value es el valor que tendra como tal la seleccion 
+   * @param viewValue es el valor que que se muestra para la seleccion 
+   * 
+   */
   groups:Group[] = [
     {value: 'A', viewValue:"A"},
     {value: 'B', viewValue:"B"},
@@ -31,6 +52,13 @@ export class AddSubjectComponent implements OnInit {
     {value: 'E', viewValue:"E"},
     {value: 'F', viewValue:"F"}
   ];
+
+  /**
+   * 
+   * @param formBuilder Constructor clasico de un form 
+   * @param dialogRef Referencia para tener acceso al dialog
+   * @param data información recibida del componente que invoco al dialog 
+   */
   constructor(
     public formBuilder: FormBuilder,
     public dialogRef : MatDialogRef<AddSubjectComponent>,
@@ -45,15 +73,14 @@ export class AddSubjectComponent implements OnInit {
 
   }
 
+
+  /**
+   * Funcion para cerrar el dialog
+   */
   onClickNo():void{
     this.dialogRef.close()
   }
   ngOnInit() {
-  }
-
-  addMateria(){
-    // console.log(this.formFile.value );
-    
   }
 
 }

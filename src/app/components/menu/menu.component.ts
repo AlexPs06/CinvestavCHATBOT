@@ -8,9 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  typeMenu:String ="alumno" //existen dos tipos de menu alumno y profesor entre esos debe de cambiar la variable
+  /**
+   * @param typeMenu tipo de menu de la vista existente estos pueden ser:  Alumno, Profesor y Adminsitrador
+   */
+  typeMenu:String ="Alumno" //existen tres tipos de menu Alumno, Profesor y Adminsitrador entre esos debe de cambiar la variable
+  
+  /**
+   * @param name variable del nombre a mostrar en el menu
+   */
   name:String="Luis"
+
+  /**
+   * @param user usuario actual del sistema
+   */
   user:User;
+
+  /**
+   * 
+   * @param router variable para cambiar la vista
+   */
   constructor(
     private router: Router,
   ) {
@@ -18,6 +34,9 @@ export class MenuComponent implements OnInit {
 
    }
 
+   /**
+    * Metodo que se ejecuta cuando se crea la vista inicializa el usuario y el nombre
+    */
   ngOnInit() {
     this.typeMenu=this.user.type;
     this.name= this.user.username
@@ -25,13 +44,21 @@ export class MenuComponent implements OnInit {
     
   }
 
+  /**
+   * Metodo para dirigirse a la vista del chatbot
+   */
   goToChatbot(){
     this.router.navigateByUrl("Chatbot")
   }
-
+  /**
+   * Metodo para dirigirse a la vista de las materias 
+   */
   goToMaterias(){
     this.router.navigateByUrl("Users-lessons")
   }
+  /**
+   * Metodo para dirigirse a la vista para validar usuarios 
+   */
   goToValidateUsers(){
     this.router.navigateByUrl("Validate-users")
   }

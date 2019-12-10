@@ -1,3 +1,6 @@
+/**
+ * variable del entorno del sistema con valores en todo el sistema  
+ */
 export const environment = {
   production: true,
   dialogflow:{
